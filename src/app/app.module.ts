@@ -8,23 +8,24 @@ import { Keyboard } from '@ionic-native/keyboard';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { DatabaseService, ForecastService, Sql, UtilService } from '../providers';
-import { MosumApp } from './app.component';
+import { PeculiaApp } from './app.component';
+import { BackendProvider } from '../providers/backend/backend';
 
 @NgModule({
   declarations: [
-    MosumApp
+    PeculiaApp
   ],
   imports: [
     JsonpModule,
     BrowserModule,
     BrowserAnimationsModule,
-    IonicModule.forRoot(MosumApp, {
+    IonicModule.forRoot(PeculiaApp, {
       preloadModules: true
     })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MosumApp
+    PeculiaApp
   ],
   providers: [
     Keyboard,
@@ -34,7 +35,8 @@ import { MosumApp } from './app.component';
     ForecastService,
     SplashScreen,
     StatusBar,
-    BrowserTab
+    BrowserTab,
+    BackendProvider
   ]
 })
 export class AppModule {

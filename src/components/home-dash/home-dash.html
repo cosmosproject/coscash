@@ -1,0 +1,74 @@
+<!--suppress ALL -->
+<ion-list>
+  <ion-item detail-none text-wrap color="primary" class="center no-label-margin" style="margin-bottom:-1px;">
+
+    <!-- Balance -->
+    <div class="bold large"> € 240  </div>
+    <div class="small"> current balance </div>
+
+    <!-- Account Summary -->
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 class="center-child">
+          <div>
+            <div>
+              deposits <ion-badge color="secondary">+23%</ion-badge>
+            </div>
+            <div class="">
+              € 540,00
+            </div>
+          </div>
+        </ion-col>
+
+        <ion-col col-4>
+            <div>
+                <div>
+                  withdrawn <ion-badge color="secondary">-20%</ion-badge>
+                </div>
+                <div class="">
+                  € 300,00
+                </div>
+              </div>
+        </ion-col>
+
+        <ion-col col-4 class="center-child">
+            <div>
+                <div ion-text>
+                  interest <ion-badge color="secondary">+00%</ion-badge>
+                </div>
+                <div class="">
+                  € 0,00
+                </div>
+              </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+  <ion-list-header color="light">SAVINGS PLANS</ion-list-header>
+  <ion-scroll scrollX="true" class="center scroll-hourly">
+    <ion-row nowrap>
+      <ion-col col-3><button ion-fab color="primary" (click)="addPlan()"> <ion-icon name="add"></ion-icon> </button></ion-col>
+      <ion-col col-3 *ngFor="let plan of Plans;">
+        <a type="button" (click)="planClicked(plan)">
+            <img src="assets/img/default.png" style="max-width: 40%">
+            <p class="bold" ion-text color="text2" no-margin no-padding>
+              <span ion-text color="text1">
+                {{plan.Name}}
+              </span>
+            </p>
+          </a>
+      </ion-col>
+    </ion-row>
+  </ion-scroll>
+
+  <ion-list-header color="light">TRANSACTIONS </ion-list-header>
+  <button ion-item detail-none text-wrap *ngFor="let transaction of Transactions; let i = index" (click)="transactionClicked(transaction)">
+    <img src="assets/img/default.png"
+         item-left style="max-width: 12%">
+    <div class="small">{{transaction.createdAt}}</div>
+    <p class="bold" ion-text color="text2">{{transaction.Type}}</p>
+    <p class="medium bold" ion-text color="text2" item-right>
+    {{transaction.Amount}} </p>
+  </button>
+</ion-list>

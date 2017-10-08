@@ -1,5 +1,8 @@
 {
-  "name": "Mosum",
-  "app_id": "",
-  "type": "ionic-angular"
+  "name": "Peculia",
+  "app_id": "1a436d97",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

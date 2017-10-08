@@ -8,9 +8,13 @@ export const DEFAULT_METRICS = {
   pressure: MetricPressure.MBAR
 };
 
+export const BACKEND_CONFIG = {
+  API_ENDPOINT: 'http://api.peculia.co/v1/'
+}
+
 export const FORECAST_CONFIG = {
   API_ENDPOINT: 'https://api.darksky.net/forecast/',
-  API_KEY: '9bb59ff3063ac4930fc96890570b0c6f'
+  API_KEY: '02092256626109c0cdb9f98441e9c78b'
 };
 
 export const CONFIG = {

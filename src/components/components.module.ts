@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from 'ionic-angular';
-import { WeatherListComponent } from './weather-list/weather-list';
+import { HomeDashComponent } from './home-dash/home-dash';
 
 @NgModule({
   declarations: [
-    WeatherListComponent
+    HomeDashComponent
   ],
   imports: [
     CommonModule,
     IonicModule
   ],
   exports: [
-    WeatherListComponent
+    HomeDashComponent
   ]
 })
 export class ComponentsModule {

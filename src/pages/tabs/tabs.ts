@@ -10,8 +10,8 @@ import { UtilService } from '../../providers';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  tab1Root: any = 'HomeWeatherPage';
-  tab2Root: string = 'WorldCityListPage';
+  tab1Root: any = 'HomePage';
+  tab2Root: string = 'PlanListPage';
   mySelectedIndex: number;
 
   constructor(public navParams: NavParams,

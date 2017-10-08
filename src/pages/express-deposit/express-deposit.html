@@ -1,0 +1,19 @@
+
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Express Deposit</ion-title>
+        <ion-buttons start *ngIf="showCancel">
+          <button showWhen="ios" ion-button (click)="dismiss()">
+            <span ion-text color="white">Cancel</span>
+          </button>
+          <button showWhen="android" ion-button icon-only (click)="dismiss()">
+            <ion-icon name="md-close" color="white"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+</ion-content>

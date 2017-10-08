@@ -1,0 +1,18 @@
+<!--suppress ALL -->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>PECULIA</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab right bottom>
+        <button ion-fab color="secondary" (click)="expressDeposit()">
+          <ion-icon name="ios-card-outline"></ion-icon>
+        </button>
+  </ion-fab>
+  <home-dash [onInitEmitter]="onInitEmitter" [onDestroyEmitter]="onDestroyEmitter"></home-dash>
+</ion-content>

@@ -1,0 +1,35 @@
+<!--suppress ALL -->
+<ion-header no-border>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Savings Plans</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab right bottom>
+    <button ion-fab (click)="addPlan()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let plan of Plans" [animateItemSliding]="false">
+      <button ion-item text-wrap (click)="planClicked(plan)">
+        <img src="assets/img/default.png" item-left style="max-width: 12%">
+        <div class="medium">{{plan.Name}}</div>
+        <p class="bold" ion-text color="text2">
+          {{plan.Payment}} | {{plan.Schedule}}
+        </p>
+      </button>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="delete(plan)">
+          <ion-icon name="trash"></ion-icon>
+          Archive
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
