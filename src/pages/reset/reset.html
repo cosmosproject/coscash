@@ -1,69 +1,28 @@
 
-<!-- <ion-header>
-
-  <ion-navbar>
-    <ion-title>reset</ion-title>
-  </ion-navbar>
-
-</ion-header> -->
-
-
-<ion-content padding>
-    <br><br><br>
+<ion-content padding no-bounce>
+    <br><br>
     <ion-list style="border-bottom:none; border-top:none;">
-        <ion-item detail-none text-wrap class="center no-label-margin" style="margin-bottom:-1px;">
-            <div class="bold large"> Peculia </div>
+        <ion-item detail-none text-wrap class="center no-label-margin" style="margin-bottom:-1px;border-top:none;">
+            <div class="bold large"> COSCASH </div>
         </ion-item>
-        <ion-item>
-            <ion-label floating>
-                <ion-icon name="ios-person-outline"></ion-icon> Username</ion-label>
-            <ion-input type="text"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label floating>
-                <ion-icon name="ios-lock-outline"></ion-icon> Password</ion-label>
-            <ion-input type="password"></ion-input>
-        </ion-item>
-
-    </ion-list>
-
-    <button ion-button color="primary" round full text-capitalize>Sign In</button>
-    <button ion-button color="primary" full clear text-capitalize (click)="openPage('ResetPage')">Forgot Password</button>
-    <button ion-button color="primary" full clear text-capitalize></button>
-    <button ion-button color="secondary" round full text-capitalize (click)="openPage('SignupPage')">Create Account</button>
-    <button ion-button color="primary" full clear text-capitalize></button>
-    <button ion-button color="primary" full clear text-capitalize>
-        <ion-select>
-                <ion-option value="de" selected>Deutsch</ion-option>
-                <ion-option value="en">English</ion-option>
-                <ion-option value="fr">Francais</ion-option>
-        </ion-select>
-    </button>
-<br><br><br>
-    <ion-list style="border-bottom:none; border-top:none;">
-        <ion-item detail-none text-wrap class="center no-label-margin" style="margin-bottom:-1px;">
-            <div class="bold large"> Peculia </div>
-        </ion-item>
+       <form #S="ngForm">
         <ion-item>
             <ion-label floating>
                 <ion-icon name="ios-mail-outline"></ion-icon> Email</ion-label>
-            <ion-input type="text"></ion-input>
+                <ion-input type="text" name="emailAddress" [(ngModel)]="user.Email" #emailAddress="ngModel" required></ion-input>
         </ion-item>
+       </form>
     </ion-list>
 
-    <button ion-button color="primary" round full text-capitalize>Reset Password</button>
-    <button ion-button color="primary" full clear text-capitalize (click)="openPage('LoginPage')">Sign In</button>
-    <button ion-button color="primary" full clear text-capitalize></button>
-    <button ion-button color="secondary" round full text-capitalize (click)="openPage('SignupPage')">Create Account</button>
+    <button ion-button color="secondary" round full text-capitalize (click)="resetPassword()" [disabled]="true">Reset Password</button>
+    <hr>
+    <button ion-button color="primary" clear full text-capitalize (click)="openPage('LoginPage')">Sign In</button>
+    <button ion-button color="primary" clear full text-capitalize (click)="openPage('SignupPage')">Create Account</button>
     <button ion-button color="primary" full clear text-capitalize></button>
     <button ion-button color="primary" full clear text-capitalize>
         <ion-select>
-                <ion-option value="de" selected>Deutsch</ion-option>
-                <ion-option value="en">English</ion-option>
+                <ion-option value="en" selected>English</ion-option>
                 <ion-option value="fr">Francais</ion-option>
         </ion-select>
     </button>
-
-
 </ion-content>

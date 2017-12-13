@@ -1,7 +1,7 @@
 
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>Express Deposit</ion-title>
+        <ion-title>Send</ion-title>
         <ion-buttons start *ngIf="showCancel">
           <button showWhen="ios" ion-button (click)="dismiss()">
             <span ion-text color="white">Cancel</span>
@@ -13,7 +13,29 @@
       </ion-toolbar>
 </ion-header>
 
+<ion-content padding no-bounce>
+  <br><br>
+  <ion-list style="border-bottom:none; border-top:none;">
+      <ion-item detail-none text-wrap class="center no-label-margin" style="margin-bottom:-1px; border-top: none;">
+          <div class="bold large"> COSCASH </div>
+          <div class="bold small" color="secondary"> 240.00 AC Available</div>
+      </ion-item>
 
-<ion-content padding>
+      <form #L="ngForm">
+          <ion-item>
+              <ion-label>
+               Recipient</ion-label>
+              <ion-input type="text" name="recipient" [(ngModel)]="details.recipient" #recipient="ngModel" placeholder="e.g 0xsd4..." required></ion-input>
+          </ion-item>
 
+          <ion-item>
+              <ion-label>
+                  Amount </ion-label>
+              <ion-input type="number" name="amount" [(ngModel)]="details.amount" #amount placeholder="e.g 5.88" required></ion-input>
+          </ion-item>
+      </form>
+
+  </ion-list>
+
+  <button ion-button color="secondary" round full text-capitalize (click)="send()" [disabled]="!L.valid">Send</button>
 </ion-content>

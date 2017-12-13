@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { JsonpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicApp, IonicModule } from 'ionic-angular';
@@ -7,36 +7,36 @@ import { BrowserTab } from '@ionic-native/browser-tab';
 import { Keyboard } from '@ionic-native/keyboard';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { DatabaseService, ForecastService, Sql, UtilService } from '../providers';
-import { PeculiaApp } from './app.component';
-import { BackendProvider } from '../providers/backend/backend';
+import { CoscashApp } from './app.component';
+import { Web3Provider, BackendProvider, UtilService } from '../providers/index';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
 
 @NgModule({
   declarations: [
-    PeculiaApp
+    CoscashApp
   ],
   imports: [
-    JsonpModule,
+    HttpModule,
     BrowserModule,
     BrowserAnimationsModule,
-    IonicModule.forRoot(PeculiaApp, {
+    IonicModule.forRoot(CoscashApp, {
       preloadModules: true
-    })
+    }),
+    NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    PeculiaApp
+    CoscashApp
   ],
   providers: [
     Keyboard,
-    Sql,
-    DatabaseService,
-    UtilService,
-    ForecastService,
     SplashScreen,
     StatusBar,
     BrowserTab,
-    BackendProvider
+    BackendProvider,
+    Web3Provider,
+    UtilService
   ]
 })
 export class AppModule {

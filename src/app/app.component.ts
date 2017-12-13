@@ -3,15 +3,15 @@ import { Nav, Platform, ModalController } from 'ionic-angular';
 import { BrowserTab } from '@ionic-native/browser-tab';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { PageInterface, UtilService } from '../providers';
+import { BackendProvider } from '../providers/backend/backend';
 
 @Component({
   templateUrl: 'app.html'
 })
-export class PeculiaApp {
+export class CoscashApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: string = 'TabsPage';
-  pages: Array<{ heading: string, items: PageInterface[] }> = [
+  pages: any = [
     {
       heading: 'VIANNEY NG',
       items: [
@@ -29,21 +29,25 @@ export class PeculiaApp {
   ];
 
   constructor(public platform: Platform,
-              public utilService: UtilService,
-              public statusBar: StatusBar,
-              public splashScreen: SplashScreen,
-              public browserTab: BrowserTab,
-              public modalCtrl: ModalController) {
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public browserTab: BrowserTab,
+    public modalCtrl: ModalController,
+    public backend: BackendProvider) {
     this.platformReady();
   }
 
   platformReady() {
     this.platform.ready().then(() => {
       if (this.platform.is('cordova')) {
-         this.initPlugins();
+        this.initPlugins();
       }
-      //let modal = this.modalCtrl.create('LoginPage');
-      //modal.present();
+      if (this.backend.isSignedIn()) {
+
+      } else {
+        let modal = this.modalCtrl.create('LoginPage');
+        modal.present();
+      }
     });
   }
 
@@ -53,7 +57,7 @@ export class PeculiaApp {
     this.splashScreen.hide();
   }
 
-  openPage(page: PageInterface) {
+  openPage(page: any) {
     if (this.isActive(page)) {
       return;
     }
@@ -65,7 +69,7 @@ export class PeculiaApp {
     }
   }
 
-  isActive(page: PageInterface): boolean {
+  isActive(page: any): boolean {
     let childNav = this.nav.getActiveChildNav();
     if (childNav) {
       return childNav.getSelected() && childNav.getSelected().root === page.tabName;
@@ -74,7 +78,7 @@ export class PeculiaApp {
   }
 
   poweredBy() {
-    let url = 'http://peculia.co/';
+    let url = 'http://cosmos-project.io/';
     this.browserTab.isAvailable()
       .then((isAvailable: boolean) => {
         if (isAvailable) {

@@ -1,38 +1,46 @@
 
 <ion-header no-border>
   <ion-navbar color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>Profile</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content no-bounce>
-    <ion-list class="full-screen">
-        <ion-item class="center half-screen" text-wrap>
-            <ion-grid>
-                <ion-row>
-                  <ion-col col-4 class="center-child">
-                    
-                  </ion-col>
-                  <ion-col col-4>
-                     <img src="assets/img/pp.jpg" style="border-radius: 50%;">
-                  </ion-col>
-                  <ion-col col-4 class="center-child">
-                    
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-          <div class="bold large">Vianney Ng</div>
-          <div class="small">@ngvianney</div>
-        </ion-item>
-        <ion-item text-wrap color="primary" class="half-screen" style="padding-left: 12%;">
-          <ion-grid>
-            
-          </ion-grid>
-        </ion-item>
-      </ion-list>
+  <ion-list>
+    <ion-item detail-none text-wrap color="primary" class="center no-label-margin" style="margin-bottom:-1px;">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 class="center-child">
+            <img src="assets/img/pp.jpg" alt="" height="100px" width="100px" style="border-radius: 50%">
+          </ion-col>
+          <ion-col col-12 class="center-child">
+            <div class="bold large"> Vianney Ng </div>
+          </ion-col>
+          <ion-col col-12 class="center-child">
+            <div class="small">
+              <ion-badge color="secondary"> @ngvianney </ion-badge>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item text-wrap>
+      <b ion-text>First Name</b>
+      <span item-right>Vianney</span>
+    </ion-item>
+    <ion-item text-wrap>
+      <b ion-text>Last Name</b>
+      <span item-right>Ng</span>
+    </ion-item>
+    <ion-item text-wrap>
+      <b ion-text>Email</b>
+      <span item-right>Vianney</span>
+    </ion-item>
+    <ion-item text-wrap>
+      <b ion-text>Username</b>
+      <span item-right>Vianney</span>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

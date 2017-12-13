@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="co.peculia.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
-    <name>Peculia</name>
-    <description>Ionic 2 Savings App</description>
+    <name>Coscash</name>
+    <description>Money Transfer based on Amani</description>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -93,4 +93,6 @@
     <plugin name="cordova-plugin-wkwebview-engine" spec="git+https://github.com/driftyco/cordova-plugin-wkwebview-engine.git" />
     <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
+    <plugin name="cordova-plugin-stripe" spec="^1.5.3" />
+    <plugin name="cordova-plugin-qrscanner" spec="^2.5.0" />
 </widget>

@@ -13,12 +13,17 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
   templateUrl: 'reset.html',
 })
 export class ResetPage {
+  user: any = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modal: ModalController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ResetPage');
+    
+  }
+
+  resetPassword() {
+    
   }
 
   openPage(page){

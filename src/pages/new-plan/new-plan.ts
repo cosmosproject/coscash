@@ -1,5 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { StripeProvider } from '../../providers/stripe/stripe';
 import { Keyboard } from '@ionic-native/keyboard';
 import * as _ from 'lodash';
 
@@ -19,7 +20,8 @@ export class NewPlanPage {
   constructor(public navParams: NavParams,
               public viewCtrl: ViewController,
               public keyboard: Keyboard,
-              public zone: NgZone) {
+              public zone: NgZone,
+              public pay: StripeProvider) {
     this.showCancel = navParams.data.showCancel !== undefined ? navParams.data.showCancel : true;
   }
 
@@ -46,8 +48,9 @@ export class NewPlanPage {
     let response = {
       status: 'canceled'
     };
+    this.pay.payWithStripe().then((success) => { console.log(success); }, (failure) => { console.log(failure ); });
     self.zone.run(() => {
-      self.viewCtrl.dismiss(response);
+      //self.viewCtrl.dismiss(response);
     });
   }
 

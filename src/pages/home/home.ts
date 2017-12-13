@@ -1,6 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
-import { IonicPage, ModalController } from 'ionic-angular';
-import { CONFIG, DatabaseService, Location, UtilService } from '../../providers';
+import { IonicPage, ModalController, NavController } from 'ionic-angular';
+import { BackendProvider } from '../../providers/backend/backend';
 
 @IonicPage({
   priority: 'high'
@@ -12,49 +12,53 @@ import { CONFIG, DatabaseService, Location, UtilService } from '../../providers'
 export class HomePage {
   onInitEmitter: EventEmitter<string>;
   onDestroyEmitter: EventEmitter<string>;
-  location: any;
 
-  constructor(public databaseService: DatabaseService,
-              public modalCtrl: ModalController,
-              public utilService: UtilService) {
+  Transactions: any[] = []
+
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public backend: BackendProvider) {
     this.onInitEmitter = new EventEmitter<string>();
     this.onDestroyEmitter = new EventEmitter<string>();
   }
 
   ionViewWillEnter() {
-    // let self = this;
-    // this.databaseService.getJson(CONFIG.HOME_LOCATION).then(data => {
-    //   if (data === null) {
-    //     let modal = self.modalCtrl.create('LocationPage', { heading: 'Enter Home City', showCancel: false });
-    //     modal.onDidDismiss((data: Location) => {
-    //       console.debug('page > modal dismissed > data > ', data);
-    //       if (data) {
-    //         self.databaseService.setJson(CONFIG.HOME_LOCATION, data);
-    //         self.location = data;
-    //         self.emitInit();
-    //       }
-    //     });
-    //     modal.present();
-    //   } else {
-    //     self.location = data;
-    //     self.emitInit();
-    //   }
-    // });
-    this.location = {};
-    this.emitInit();
+    if(this.backend.isSignedIn()) {
+       this.backend.getTransactions().subscribe((transactions: any) => {
+        this.Transactions = transactions;
+       });
+    }
   }
 
-  expressDeposit() {
+  sendMoney() {
     let self = this;
-    let modal = self.modalCtrl.create('ExpressDepositPage');
+    let modal = self.modalCtrl.create('ExpressDepositPage', { options: {}});
     modal.onDidDismiss((response: any) => {
-      if(response.status == 'canceled'){
-        self.utilService.showToast('canceled');
-      } else {
-        self.utilService.showToast('created');
-      }
+      
     });
     modal.present();
+  }
+
+  showQR() {
+    let self = this;
+    let modal = self.modalCtrl.create('ShowQrPage', { options: {}});
+    modal.onDidDismiss((response: any) => {
+      
+    });
+    modal.present();
+  }
+
+  scanQR() {
+    let self = this;
+    let modal = self.modalCtrl.create('ScanQrPage', { options: {}});
+    modal.onDidDismiss((response: any) => {
+      
+    });
+    modal.present();
+  }
+
+  transactionClicked(tran: any) {
+    this.navCtrl.push('TransactionDetailPage', {
+      transaction: tran
+    });
   }
 
   emitInit() {
@@ -68,4 +72,6 @@ export class HomePage {
       this.onDestroyEmitter.emit('');
     }
   }
+
+
 }

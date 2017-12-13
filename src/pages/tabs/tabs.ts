@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams } from 'ionic-angular';
-import { UtilService } from '../../providers';
 
 @IonicPage({
   priority: 'high'
@@ -11,11 +10,10 @@ import { UtilService } from '../../providers';
 })
 export class TabsPage {
   tab1Root: any = 'HomePage';
-  tab2Root: string = 'PlanListPage';
+  tab2Root: any = 'PlanListPage';
   mySelectedIndex: number;
 
-  constructor(public navParams: NavParams,
-              public utilService: UtilService) {
+  constructor(public navParams: NavParams) {
     this.mySelectedIndex = navParams.data.tabIndex || 0;
   }
 }

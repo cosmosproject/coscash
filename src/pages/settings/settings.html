@@ -8,12 +8,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list *ngIf="homeLocation">
-    <ion-list-header>Location</ion-list-header>
+<ion-content no-bounce>
+  <ion-list>
+    <ion-list-header>Language</ion-list-header>
     <button ion-item class="item-select" (click)="changeHomeLocation()">
       <ion-label color="primary">Home Location</ion-label>
-      <ion-note item-right style="color:inherit">{{homeLocation.name}}</ion-note>
+      <ion-note item-right style="color:inherit">Yde</ion-note>
     </button>
   </ion-list>
   <ion-list *ngIf="metrics">

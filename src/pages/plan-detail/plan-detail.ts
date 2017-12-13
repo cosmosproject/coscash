@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams } from 'ionic-angular';
-import { Location } from '../../providers';
 
 @IonicPage() 
 @Component({
@@ -8,9 +7,9 @@ import { Location } from '../../providers';
   templateUrl: 'plan-detail.html'
 })
 export class PlanDetailPage {
-  location: Location;
+  location: any;
 
   constructor(public params: NavParams) {
-    this.location = params.data.location;
+    
   }
 }

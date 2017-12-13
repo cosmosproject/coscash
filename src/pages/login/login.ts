@@ -1,30 +1,32 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { BackendProvider } from '../../providers';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modal: ModalController) {
+  user: any = {};
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modal: ModalController, 
+              public backend: BackendProvider) {
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    
   }
 
   openPage(page){
       let modal = this.modal.create(page, {});
       modal.present();
+  }
+
+  login(){
+    this.backend.signin(this.user).subscribe((response: any) => {
+       console.log(response);
+    });
   }
 
 }

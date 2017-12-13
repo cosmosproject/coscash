@@ -1,6 +1,6 @@
 {
-  "name": "Peculia",
-  "app_id": "1a436d97",
+  "name": "Coscash",
+  "app_id": "355d40f5",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

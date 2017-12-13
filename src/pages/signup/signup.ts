@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { UtilService, BackendProvider } from '../../providers';
+import { BackendProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -24,9 +24,15 @@ export class SignupPage {
 
   signup(){
     let _user = this.user;
-    delete _user.Password2;
     this.backend.signup(_user).subscribe((res: any) => {
        console.log(res);
+       if(res.status == 'success') {
+         //notify and redirect to login page
+
+       } else {
+         //notify and retry
+
+       }
     });
   }
 
