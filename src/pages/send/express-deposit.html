@@ -18,9 +18,11 @@
   <ion-list style="border-bottom:none; border-top:none;">
       <ion-item detail-none text-wrap class="center no-label-margin" style="margin-bottom:-1px; border-top: none;">
           <div class="bold large"> COSCASH </div>
-          <div class="bold small" color="secondary"> 240.00 AC Available</div>
+          <div class="bold small" color="secondary"> {{currentUser?.Balance}} Amani Available</div>
       </ion-item>
+      
 
+      <br><br>
       <form #L="ngForm">
           <ion-item>
               <ion-label>
@@ -37,5 +39,5 @@
 
   </ion-list>
 
-  <button ion-button color="secondary" round full text-capitalize (click)="send()" [disabled]="!L.valid">Send</button>
+  <button ion-button color="secondary" round full text-capitalize (click)="send()" [disabled]="!L.valid || isSending">Send <ion-spinner *ngIf="isSending" name="bubbles"></ion-spinner></button>
 </ion-content>

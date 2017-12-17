@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  UtilService,
-  BackendProvider
-} from '../../providers';
-import { IonicPage, ModalController } from 'ionic-angular';
+import { BackendProvider } from '../../providers';
+import { IonicPage, ModalController, NavController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -15,13 +12,18 @@ import { IonicPage, ModalController } from 'ionic-angular';
   `]
 })
 export class SettingsPage implements OnInit {
+  currentUser: any = {};
 
-  constructor( public modalCtrl: ModalController, 
-               public utilService: UtilService,
-               public backend: BackendProvider) {
+  constructor(public modalCtrl: ModalController,
+    public backend: BackendProvider,
+    public navCtrl: NavController) {
   }
 
   ngOnInit() {
-    
+    this.currentUser = this.backend.currentUser;
+  }
+
+  Change() {
+
   }
 }

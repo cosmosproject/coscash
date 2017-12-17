@@ -37,7 +37,7 @@
 
     </ion-list>
 
-    <button ion-button color="secondary" round full text-capitalize [disabled]="!S.valid" (click)="signup()">Create Account</button>
+    <button ion-button color="secondary" round full text-capitalize [disabled]="!S.valid || isProcessing" (click)="signup()">Create Account <ion-spinner *ngIf="isProcessing" name="bubbles"></ion-spinner></button>
     <hr>
     <button ion-button color="primary" full clear text-capitalize (click)="openPage('ResetPage')">Forgot Password</button>
     <button ion-button color="primary" full clear text-capitalize (click)="openPage('LoginPage')">Already have an account? Sign In</button>

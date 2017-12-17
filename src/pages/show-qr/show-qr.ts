@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ViewController, NavParams } from 'ionic-angular';
+import { BackendProvider } from '../../providers'
 
 /**
  * Generated class for the ShowQrPage page.
@@ -18,15 +19,18 @@ export class ShowQrPage {
   value : string = 'kilomafia';
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public viewCtrl: ViewController,
+              public backend: BackendProvider) {
   }
 
-  ionViewDidLoad() {
-    //console.log('ionViewDidLoad ShowQrPage');
+  ngOnInit() {
+    
   }
 
   dismiss(){
-    this.viewCtrl.dismiss({status:'canceled'});
+    this.viewCtrl.dismiss();
   }
 
 

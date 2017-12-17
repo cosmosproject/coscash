@@ -1,6 +1,9 @@
 <!--suppress ALL -->
 <ion-header>
   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
     <ion-title>COSCASH</ion-title>
   </ion-navbar>
 </ion-header>
@@ -24,27 +27,25 @@
             <img src="assets/img/pp.jpg" alt="" height="100px" width="100px" style="border-radius: 50%">
           </ion-col>
           <ion-col col-12 class="center-child">
-            <div class="bold large"> Vianney Ng </div>
+            <div class="bold large"> {{currentUser?.FirstName}} {{ currentUser?.LastName}} </div>
           </ion-col>
           <ion-col col-12 class="center-child">
             <div class="small">
-              <ion-badge color="secondary"> 0x1940753DfbFcb64D39e2d610 </ion-badge>
+              <ion-badge color="secondary"> {{currentUser?.PublicKey || '0x1940753DfbFcb64D39e2d610'}} </ion-badge>
             </div>
           </ion-col>
           <ion-col col-12 class="center-child">
-            <div class="small"> 240 Amani </div>
+            <div class="small"> {{currentUser?.Balance}} Amani (€ {{ currentUser?.Balance * 1 }}) </div>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
-
-    <ion-spinner name="bubbles"></ion-spinner>
     
     <ion-list-header color="light">TRANSACTIONS </ion-list-header>
     <button ion-item detail-none text-wrap *ngFor="let transaction of Transactions; let i = index" (click)="transactionClicked(transaction)">
       <img src="assets/img/default.png" item-left style="max-width: 12%">
       <div class="small">{{transaction.createdAt}}</div>
-      <p class="bold" ion-text color="text2">{{transaction.Art}}</p>
+      <p class="bold" ion-text color="text2">{{transaction.Title}}</p>
       <p class="medium bold" ion-text color="text2" item-right>
         {{transaction.Amount}} </p>
     </button>

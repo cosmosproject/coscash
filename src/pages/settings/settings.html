@@ -10,47 +10,27 @@
 
 <ion-content no-bounce>
   <ion-list>
-    <ion-list-header>Language</ion-list-header>
-    <button ion-item class="item-select" (click)="changeHomeLocation()">
-      <ion-label color="primary">Home Location</ion-label>
-      <ion-note item-right style="color:inherit">Yde</ion-note>
-    </button>
-  </ion-list>
-  <ion-list *ngIf="metrics">
-    <ion-list-header>Metrics</ion-list-header>
+    <ion-list-header>Basic</ion-list-header>
     <ion-item>
-      <ion-label color="primary">Temperature</ion-label>
-      <ion-select [(ngModel)]="metrics.temp" (ionChange)="metricChange()">
-        <ion-option [value]="enumTemp.F">Fahrenheit</ion-option>
-        <ion-option [value]="enumTemp.C">Celsius</ion-option>
-      </ion-select>
-    </ion-item>
-    <!--<ion-item>-->
-    <!--<ion-label color="primary">Time</ion-label>-->
-    <!--<ion-select [(ngModel)]="metrics.time" (ionChange)="metricChange()">-->
-    <!--<ion-option [value]="12">12 Hour</ion-option>-->
-    <!--<ion-option [value]="24">24 Hour</ion-option>-->
-    <!--</ion-select>-->
-    <!--</ion-item>-->
-    <ion-item>
-      <ion-label color="primary">Length</ion-label>
-      <ion-select [(ngModel)]="metrics.length" (ionChange)="metricChange()">
-        <ion-option [value]="enumLength.IN">Inch</ion-option>
-        <ion-option [value]="enumLength.CM">Centimeter</ion-option>
+      <ion-label color="primary">Language</ion-label>
+      <ion-select [(ngModel)]="currentUser.Language" (ionChange)="Change()">
+        <ion-option value="en">English</ion-option>
+        <ion-option value="fr">Francais</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label color="primary">Distance</ion-label>
-      <ion-select [(ngModel)]="metrics.distance" (ionChange)="metricChange()">
-        <ion-option [value]="enumDistance.MI">Miles</ion-option>
-        <ion-option [value]="enumDistance.KM">Kilometre</ion-option>
+      <ion-label color="primary">Currency</ion-label>
+      <ion-select [(ngModel)]="currentUser.Currency" (ionChange)="Change()">
+        <ion-option value="EUR">EURO</ion-option>
+        <ion-option value="USD">US Dollar</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-label color="primary">Pressure</ion-label>
-      <ion-select [(ngModel)]="metrics.pressure" (ionChange)="metricChange()">
-        <ion-option [value]="enumPressure.MBAR">mbar</ion-option>
-        <ion-option [value]="enumPressure.HPA">hPa</ion-option>
+    <ion-list-header>Privacy</ion-list-header>
+    <ion-item style="border-bottom:none;">
+      <ion-label color="primary">Newsletter</ion-label>
+      <ion-select [(ngModel)]="currentUser.Newsletter" (ionChange)="Change()">
+        <ion-option value="true">Yes</ion-option>
+        <ion-option value="false">No</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>

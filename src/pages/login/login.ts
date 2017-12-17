@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { BackendProvider } from '../../providers';
+import { IonicPage, NavController } from 'ionic-angular';
+import { BackendProvider, UtilService } from '../../providers/index';
 
 @IonicPage()
 @Component({
@@ -9,23 +9,31 @@ import { BackendProvider } from '../../providers';
 })
 export class LoginPage {
   user: any = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modal: ModalController, 
-              public backend: BackendProvider) {
+  isProcessing: boolean = false;
+
+  constructor(public navCtrl: NavController,
+              public backend: BackendProvider, 
+              public util: UtilService) {
 
   }
 
-  ionViewDidLoad() {
-    
+  openPage(page) {
+    this.navCtrl.push(page);
   }
 
-  openPage(page){
-      let modal = this.modal.create(page, {});
-      modal.present();
-  }
-
-  login(){
-    this.backend.signin(this.user).subscribe((response: any) => {
-       console.log(response);
+  login() {
+    this.isProcessing = true;
+    this.backend.signin(this.user).then((success: any) => {
+      if (success) {
+        this.isProcessing = false;
+        this.navCtrl.setRoot('HomePage');
+      } else {
+        this.util.showToast('Invalid Email/Password or Account not found. Try again or create an account.');
+        this.isProcessing = false;
+      }
+    }, (err) => {
+      this.util.showToast('Invalid Email/Password or Account not found. Try again or create an account.');
+      this.isProcessing = false;
     });
   }
 

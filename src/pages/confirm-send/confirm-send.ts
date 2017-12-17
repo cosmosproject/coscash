@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the ConfirmSendPage page.
@@ -13,12 +13,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'confirm-send.html',
 })
 export class ConfirmSendPage {
+  message: any = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ConfirmSendPage');
+    this.message = this.navParams.get('message');
+    console.log(this.message);
+    let self = this;
+    setTimeout(() => {
+       self.viewCtrl.dismiss();
+    }, 3000);
   }
 
 }

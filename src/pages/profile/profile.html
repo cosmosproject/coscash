@@ -1,6 +1,8 @@
-
 <ion-header no-border>
   <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Profile</ion-title>
   </ion-navbar>
 </ion-header>
@@ -15,31 +17,39 @@
             <img src="assets/img/pp.jpg" alt="" height="100px" width="100px" style="border-radius: 50%">
           </ion-col>
           <ion-col col-12 class="center-child">
-            <div class="bold large"> Vianney Ng </div>
+            <div class="bold large"> {{currentUser?.FirstName}} {{ currentUser?.LastName}} </div>
           </ion-col>
           <ion-col col-12 class="center-child">
             <div class="small">
-              <ion-badge color="secondary"> @ngvianney </ion-badge>
+              <ion-badge color="secondary"> @{{currentUser?.Username}} </ion-badge>
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
     <ion-item text-wrap>
+      <b ion-text>Title</b>
+      <span item-right>{{currentUser?.Title}}</span>
+    </ion-item>
+    <ion-item text-wrap>
       <b ion-text>First Name</b>
-      <span item-right>Vianney</span>
+      <span item-right>{{currentUser?.FirstName}}</span>
     </ion-item>
     <ion-item text-wrap>
       <b ion-text>Last Name</b>
-      <span item-right>Ng</span>
+      <span item-right>{{currentUser?.LastName}}</span>
     </ion-item>
     <ion-item text-wrap>
       <b ion-text>Email</b>
-      <span item-right>Vianney</span>
+      <span item-right>{{currentUser?.Email}}</span>
     </ion-item>
     <ion-item text-wrap>
       <b ion-text>Username</b>
-      <span item-right>Vianney</span>
+      <span item-right>{{currentUser?.Username}}</span>
+    </ion-item>
+    <ion-item text-wrap>
+      <b ion-text>Country</b>
+      <span item-right>{{currentUser?.Country}}</span>
     </ion-item>
   </ion-list>
 

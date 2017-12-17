@@ -15,13 +15,13 @@
             <ion-item>
                 <ion-label floating>
                     <ion-icon name="ios-lock-outline"></ion-icon> Password</ion-label>
-                <ion-input type="password" name="password" [(ngModel)]="user.Password" #password required></ion-input>
+                <ion-input type="password" name="password" [(ngModel)]="user.Password" #password required min-length="8"></ion-input>
             </ion-item>
         </form>
 
     </ion-list>
 
-    <button ion-button color="secondary" round full text-capitalize (click)="login()" [disabled]="!L.valid">Sign In</button>
+    <button ion-button color="secondary" round full text-capitalize (click)="login()" [disabled]="!L.valid || isProcessing">Sign In <ion-spinner *ngIf="isProcessing" name="bubbles"></ion-spinner></button>
     <hr>
     <button ion-button color="primary" full clear text-capitalize (click)="openPage('ResetPage')">Forgot Password</button>
     <button ion-button color="primary" full clear text-capitalize (click)="openPage('SignupPage')">Don't have an account? Create an Account</button>
@@ -32,6 +32,4 @@
                 <ion-option value="fr">Francais</ion-option>
         </ion-select>
     </button>
-
-
 </ion-content>

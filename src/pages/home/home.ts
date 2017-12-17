@@ -1,6 +1,8 @@
-import { Component, EventEmitter } from '@angular/core';
-import { IonicPage, ModalController, NavController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { Nav, IonicPage, ModalController, NavController } from 'ionic-angular';
 import { BackendProvider } from '../../providers/backend/backend';
+
+declare var moment: any;
 
 @IonicPage({
   priority: 'high'
@@ -10,29 +12,29 @@ import { BackendProvider } from '../../providers/backend/backend';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  onInitEmitter: EventEmitter<string>;
-  onDestroyEmitter: EventEmitter<string>;
-
+  currentUser: any;
   Transactions: any[] = []
 
-  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public backend: BackendProvider) {
-    this.onInitEmitter = new EventEmitter<string>();
-    this.onDestroyEmitter = new EventEmitter<string>();
+  constructor(public modalCtrl: ModalController, 
+              public navCtrl: NavController, 
+              public backend: BackendProvider) {
+    
   }
 
   ionViewWillEnter() {
-    if(this.backend.isSignedIn()) {
-       this.backend.getTransactions().subscribe((transactions: any) => {
-        this.Transactions = transactions;
-       });
-    }
+      this.backend.getTransactions().subscribe((transactions: any) => {
+         this.Transactions = transactions.body;
+         this.currentUser = this.backend.currentUser;
+      });
   }
 
   sendMoney() {
     let self = this;
     let modal = self.modalCtrl.create('ExpressDepositPage', { options: {}});
     modal.onDidDismiss((response: any) => {
-      
+      this.backend.getTransactions().subscribe((transactions: any) => {
+        this.Transactions = transactions.body
+     });
     });
     modal.present();
   }
@@ -41,7 +43,9 @@ export class HomePage {
     let self = this;
     let modal = self.modalCtrl.create('ShowQrPage', { options: {}});
     modal.onDidDismiss((response: any) => {
-      
+      this.backend.getTransactions().subscribe((transactions: any) => {
+        this.Transactions = transactions.body
+      });
     });
     modal.present();
   }
@@ -50,7 +54,9 @@ export class HomePage {
     let self = this;
     let modal = self.modalCtrl.create('ScanQrPage', { options: {}});
     modal.onDidDismiss((response: any) => {
-      
+      this.backend.getTransactions().subscribe((transactions: any) => {
+        this.Transactions = transactions.body
+     });
     });
     modal.present();
   }
@@ -60,18 +66,5 @@ export class HomePage {
       transaction: tran
     });
   }
-
-  emitInit() {
-    if (this.onInitEmitter) {
-      this.onInitEmitter.emit('');
-    }
-  }
-
-  ionViewWillLeave() {
-    if (this.onDestroyEmitter) {
-      this.onDestroyEmitter.emit('');
-    }
-  }
-
 
 }

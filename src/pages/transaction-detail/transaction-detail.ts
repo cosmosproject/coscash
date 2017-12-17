@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Content, IonicPage, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavParams } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { UtilService } from '../../providers/index';
 
@@ -8,28 +8,17 @@ import { UtilService } from '../../providers/index';
   selector: 'page-transaction-detail',
   templateUrl: 'transaction-detail.html'
 })
-export class TransactionDetailPage implements OnInit {
-  @ViewChild(Content) content: Content;
-
+export class TransactionDetailPage {
+  transaction: any = {};
   constructor(public params: NavParams,
               public statusBar: StatusBar,
               public utilService: UtilService) {
     
   }
 
-  ngOnInit() {
-    
-  }
-
   ionViewWillEnter() {
-    this.statusBar.styleDefault();
+    this.transaction = this.params.get('transaction');
+    console.log(this.transaction);
   }
 
-  ionViewWillLeave() {
-    this.statusBar.styleLightContent();
-  }
-
-  ionViewDidLoad() {
-   
-  }
 }

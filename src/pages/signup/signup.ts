@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { BackendProvider } from '../../providers';
+import { IonicPage, NavController } from 'ionic-angular';
+import { BackendProvider, UtilService } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -9,30 +9,32 @@ import { BackendProvider } from '../../providers';
 })
 export class SignupPage {
   user: any = {};
+  isProcessing: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modal: ModalController, public backend: BackendProvider) {
-  }
-
-  ionViewDidLoad() {
-    
+  constructor(public navCtrl: NavController, 
+              public util:UtilService, 
+              public backend: BackendProvider) {
   }
 
   openPage(page){
-    let modal = this.modal.create(page);
-    modal.present();
+    this.navCtrl.push(page);
   }
 
   signup(){
+    this.isProcessing = true;
     let _user = this.user;
-    this.backend.signup(_user).subscribe((res: any) => {
-       console.log(res);
+    this.backend.signup(_user).then((res: any) => {
        if(res.status == 'success') {
-         //notify and redirect to login page
-
+         //redirect to success page
+         this.isProcessing = false;
+         this.navCtrl.push('ConfirmRegPage');
        } else {
          //notify and retry
-
+         this.util.showToast(res.body.errors[0].message);
+         this.isProcessing = false;
        }
+    }, (err) => {
+      console.log(err);
     });
   }
 

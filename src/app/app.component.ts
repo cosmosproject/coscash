@@ -10,20 +10,15 @@ import { BackendProvider } from '../providers/backend/backend';
 })
 export class CoscashApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: string = 'TabsPage';
+  rootPage: string;;
   pages: any = [
     {
       heading: 'VIANNEY NG',
       items: [
-        { title: 'Home', name: 'TabsPage', tabName: 'HomePage', index: 0, icon: 'ios-home-outline' },
-        { title: 'Savings Plans', name: 'TabsPage', tabName: 'PlanListPage', index: 1, icon: 'ios-cash-outline' },
-        { title: 'Profile', name: 'ProfilePage', icon: 'ios-contact-outline' }
-      ]
-    },
-    {
-      heading: 'Settings',
-      items: [
-        { title: 'Settings', name: 'SettingsPage', icon: 'ios-settings-outline' }
+        { title: 'Home', name: 'HomePage', icon: 'ios-home-outline' },
+        { title: 'Profile', name: 'ProfilePage', icon: 'ios-contact-outline' },
+        { title: 'Settings', name: 'SettingsPage', icon: 'ios-settings-outline' },
+        { title: 'Cosmos & Amani', name: 'AboutPage', icon: 'ios-information-circle-outline' }
       ]
     }
   ];
@@ -43,10 +38,9 @@ export class CoscashApp {
         this.initPlugins();
       }
       if (this.backend.isSignedIn()) {
-
+        this.rootPage = "HomePage"
       } else {
-        let modal = this.modalCtrl.create('LoginPage');
-        modal.present();
+        this.rootPage = "LoginPage"
       }
     });
   }
@@ -57,16 +51,13 @@ export class CoscashApp {
     this.splashScreen.hide();
   }
 
+
+
   openPage(page: any) {
     if (this.isActive(page)) {
       return;
     }
-    let params = page.index ? { tabIndex: page.index } : {};
-    if (this.nav.getActiveChildNav() && page.index != undefined) {
-      this.nav.getActiveChildNav().select(page.index);
-    } else {
-      this.nav.setRoot(page.name, params).catch(err => console.error(err));
-    }
+    this.nav.setRoot(page.name);
   }
 
   isActive(page: any): boolean {
@@ -77,8 +68,12 @@ export class CoscashApp {
     return !!(this.nav.getActive() && this.nav.getActive().name === page.name);
   }
 
+  logout() {
+
+  }
+
   poweredBy() {
-    let url = 'http://cosmos-project.io/';
+    let url = 'http://ethereum.org/';
     this.browserTab.isAvailable()
       .then((isAvailable: boolean) => {
         if (isAvailable) {

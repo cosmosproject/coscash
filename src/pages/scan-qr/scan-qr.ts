@@ -22,7 +22,7 @@ export class ScanQrPage {
               public modalCtrl: ModalController) {
   }
 
-  ionViewDidLoad() {
+  ngOnInit() {
     this.qrScanner.prepare()
     .then((status: QRScannerStatus) => {
        if (status.authorized) {
