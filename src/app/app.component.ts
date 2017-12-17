@@ -48,7 +48,7 @@ export class CoscashApp {
   initPlugins() {
     this.statusBar.styleLightContent();
     this.statusBar.backgroundColorByHexString('#12121c');
-    //this.splashScreen.hide();
+    this.splashScreen.hide();
   }
 
 

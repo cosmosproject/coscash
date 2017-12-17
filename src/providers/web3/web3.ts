@@ -290,7 +290,8 @@ export class Web3Provider {
     ]);
  
     this.amani = this.amaniContract.at('0x5e4118547d04a7b8bf64a14c4c02122d4fbdd057');
-    this.webbie.eth.defaultAccount = '0xa627b72eDdCb6f88F1070a62D18B01F5679DcB21';
+    this.webbie.eth.defaultAccount = 'f80613ab31611f243f78cc95a71ca388b841b005dbb1062511ebad6f5832f1ba';
+    //this.webbie.personal.unlockAccount('0xa627b72eDdCb6f88F1070a62D18B01F5679DcB21', 'ovodrake');
     console.log(this.webbie);
   }
 
