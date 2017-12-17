@@ -10,7 +10,7 @@ import { BackendProvider } from '../providers/backend/backend';
 })
 export class CoscashApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: string;;
+  rootPage: string = "HomePage";
   pages: any = [
     {
       heading: 'VIANNEY NG',
@@ -48,7 +48,7 @@ export class CoscashApp {
   initPlugins() {
     this.statusBar.styleLightContent();
     this.statusBar.backgroundColorByHexString('#12121c');
-    this.splashScreen.hide();
+    //this.splashScreen.hide();
   }
 
 

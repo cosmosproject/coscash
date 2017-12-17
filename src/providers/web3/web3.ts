@@ -17,7 +17,8 @@ export class Web3Provider {
   amani: any;
 
   constructor(public http: Http) {
-    this.webbie = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/lPNN4kLAg6X2W8Wjb8Om"));
+    this.webbie = new Web3(new Web3.providers.HttpProvider("http://52.208.46.161:8549"));
+    //this.webbie = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/lPNN4kLAg6X2W8Wjb8Om"));
     this.amaniContract = this.webbie.eth.contract([
       {
         "constant": true,
