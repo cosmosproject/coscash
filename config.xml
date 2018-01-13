@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="co.peculia.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+<widget id="io.cosmos-project.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Coscash</name>
     <description>Money Transfer based on Amani</description>
     <content src="index.html" />

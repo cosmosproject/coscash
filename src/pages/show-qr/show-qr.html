@@ -19,15 +19,15 @@
 </ion-header>
 
 
-<ion-content padding no-bounce>
+<ion-content no-padding no-bounce>
   <br><br>
   <ion-list style="border-bottom:none; border-top:none;">
       <ion-item detail-none text-wrap class="center no-label-margin" style="margin-bottom:-1px; border-top: none;">
-        <ngx-qrcode [qrc-element-type]="elementType" [qrc-value] = "value">
+        <ngx-qrcode [qrc-element-type]="elementType" [qrc-value] = "value?.code">
         </ngx-qrcode>        
       </ion-item>
       <ion-item class="center no-label-margin" style="margin-bottom:-1px; border-bottom: none;">
-        <h2 color="primary">0xd67astdg67zdgzia67zud</h2>
+        <span color="primary" class="">{{value?.code}}</span>
     </ion-item>
   </ion-list>
 

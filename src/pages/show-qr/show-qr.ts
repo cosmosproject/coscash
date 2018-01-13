@@ -16,7 +16,7 @@ import { BackendProvider } from '../../providers'
 export class ShowQrPage {
   showCancel: boolean = true;
   elementType : 'url' | 'canvas' | 'img' = 'url';
-  value : string = 'kilomafia';
+  value : any = {};
   
 
   constructor(public navCtrl: NavController, 
@@ -26,7 +26,7 @@ export class ShowQrPage {
   }
 
   ngOnInit() {
-    
+    this.value.code = this.navParams.get('qrCode');
   }
 
   dismiss(){

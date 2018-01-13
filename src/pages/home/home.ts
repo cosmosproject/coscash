@@ -41,7 +41,7 @@ export class HomePage {
 
   showQR() {
     let self = this;
-    let modal = self.modalCtrl.create('ShowQrPage', { options: {}});
+    let modal = self.modalCtrl.create('ShowQrPage', { qrCode: this.currentUser.PublicKey});
     modal.onDidDismiss((response: any) => {
       this.backend.getTransactions().subscribe((transactions: any) => {
         this.Transactions = transactions.body
